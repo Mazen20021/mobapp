@@ -1,0 +1,1 @@
+ D:\\Main\\project\\SVIG\\mobapp\\.dart_tool\\flutter_build\\5031d160da5ed7d2e97cd360ebef87cc\\native_assets.yaml: 

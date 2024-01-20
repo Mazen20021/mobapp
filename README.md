@@ -50,3 +50,11 @@ SVIG is the result of the collaborative efforts of a dedicated team of professio
 
 ## App Version
 - 1.0.0.0 - Under Development. Stay updated for the latest developments.
+
+## App Shots
+### Login Page
+![b8a89211-6234-4c70-87c9-be8abce5d12b](https://github.com/Mazen20021/SVIG/assets/131156076/34799495-cd1e-48ab-b38a-475b639a76b6)
+### SignUp Page
+![38f91723-8d9c-4124-8432-8efdc5b4145a](https://github.com/Mazen20021/SVIG/assets/131156076/e1ca8392-a88e-4059-a6fe-d0359d307e34)
+### System Reactions 
+

@@ -122,6 +122,7 @@ class _signup extends State<SignUp> {
                       Image.asset(
                         "assets/images/dice-4.png",
                         width: 200,
+                        color: const Color.fromARGB(255, 144, 145, 72),
                       ),
                       //medium Part
                       const SizedBox(height: 30),

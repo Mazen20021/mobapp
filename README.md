@@ -60,3 +60,7 @@ SVIG is the result of the collaborative efforts of a dedicated team of professio
 ![image](https://github.com/Mazen20021/SVIG/assets/131156076/871fca91-8367-4ef9-8ba9-d0c2e0827e39)
 ### System InterActions SignUp
 ![image](https://github.com/Mazen20021/SVIG/assets/131156076/5f757126-3282-4d6f-9423-e2b2be31bfea)
+### User Not Found after Database Process
+![image](https://github.com/Mazen20021/SVIG/assets/131156076/d21c1c69-d166-45f2-8b0d-c2541c00877f)
+
+

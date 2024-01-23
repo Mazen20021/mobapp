@@ -8,224 +8,226 @@ class Mainpage extends StatefulWidget {
   }
 }
 
-class _mainpage extends State<Mainpage> {
-  void addholder() {
-    setState(() {});
+class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
+  late final TabController _tabController;
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 33, 42, 52),
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 144, 145, 72),
-          title: Row(
-            children: [
-              const Text(
-                "SVIG",
-                style: TextStyle(
-                    color: Color.fromARGB(255, 33, 42, 52), fontSize: 30),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        title: Row(
+          children: [
+            const Text("SVIG"),
+            const SizedBox(width: 5),
+            Image.asset(
+              "assets/images/dice-3.png",
+              width: 30,
+              color: const Color.fromARGB(255, 33, 42, 52),
+            ),
+          ],
+        ),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: const <Widget>[
+            Tab(
+              text: ("Feed"),
+              icon: Icon(
+                Icons.feed_rounded,
               ),
-              const SizedBox(width: 20),
-              Image.asset(
-                "assets/images/dice-3.png",
-                width: 50,
+            ),
+            Tab(
+              text: ("Holders"),
+              icon: Icon(
+                Icons.person_add_alt_1,
+                //size: 40,
+              ),
+            ),
+            Tab(
+              text: ("Track"),
+              icon: Icon(Icons.radar_rounded),
+            ),
+            Tab(
+              text: ("Stream"),
+              icon: Icon(Icons.streetview_sharp),
+            ),
+          ],
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          const NestedTabBar('Feed'),
+          const NestedTabBarconf('Holders'),
+          Container(
+            color: const Color.fromARGB(255, 33, 42, 52),
+            child: const Center(
+              child: Text(
+                "Track",
+                style: TextStyle(color: Color.fromARGB(255, 144, 145, 72)),
+              ),
+            ),
+          ),
+          //NestedTabBar('Track'),
+          Container(
+            color: const Color.fromARGB(255, 33, 42, 52),
+            child: const Center(
+              child: Text(
+                "Stream",
+                style: TextStyle(color: Color.fromARGB(255, 144, 145, 72)),
+              ),
+            ),
+          ),
+          // NestedTabBar('Stream'),
+        ],
+      ),
+    );
+  }
+}
+
+class NestedTabBar extends StatefulWidget {
+  const NestedTabBar(this.outerTab, {super.key});
+
+  final String outerTab;
+
+  @override
+  State<NestedTabBar> createState() => _NestedTabBarState();
+}
+
+class _NestedTabBarState extends State<NestedTabBar>
+    with TickerProviderStateMixin {
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        TabBar.secondary(
+          controller: _tabController,
+          tabs: const <Widget>[
+            Tab(text: 'Overview'),
+            Tab(text: 'Specifications'),
+          ],
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              Card(
                 color: const Color.fromARGB(255, 33, 42, 52),
+                margin: const EdgeInsets.all(16.0),
+                child: Center(
+                    child: Text(
+                  '${widget.outerTab}: Overview tab',
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 144, 145, 72)),
+                )),
               ),
-              const SizedBox(
-                width: 100,
-              ),
-              TextButton.icon(
-                onPressed: addholder,
-                label: const Text(
-                  "",
-                ),
-                icon: const Row(
-                  children: [
-                    SizedBox(
-                      child: Icon(
-                        Icons.more_horiz_rounded,
-                        color: Color.fromARGB(255, 33, 42, 52),
-                        size: 50,
-                      ),
-                    ),
-                  ],
-                ),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 144, 145, 72),
-                ),
-              ),
-            ],
-          )),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Column(
-                children: [
-                  const SizedBox(height: 100),
-                  Row(
-                    children: [
-                      const SizedBox(width: 20),
-                      Column(
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: addholder,
-                            label: const Text(
-                              "",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 0, 0, 0)),
-                            ),
-                            icon: const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 70,
-                                  child: Icon(
-                                    Icons.person_add_alt_1,
-                                    color: Color.fromARGB(255, 33, 42, 52),
-                                    size: 80,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 144, 145, 72),
-                              fixedSize: const Size.fromHeight(100),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Add Holder",
-                            style: TextStyle(fontSize: 25, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 110),
-                      Column(
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: addholder,
-                            label: const Text(
-                              "",
-                            ),
-                            icon: const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 70,
-                                  child: Icon(
-                                    Icons.streetview_sharp,
-                                    color: Color.fromARGB(255, 33, 42, 52),
-                                    size: 80,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 144, 145, 72),
-                              fixedSize: const Size.fromHeight(100),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Live Stream",
-                            style: TextStyle(fontSize: 25, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 200),
-                  Row(
-                    children: [
-                      const SizedBox(width: 30),
-                      Column(
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: addholder,
-                            label: const Text(
-                              "",
-                            ),
-                            icon: const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 65,
-                                  child: Icon(
-                                    Icons.radar_rounded,
-                                    color: Color.fromARGB(255, 33, 42, 52),
-                                    size: 80,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 144, 145, 72),
-                              fixedSize: const Size.fromHeight(100),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Track",
-                            style: TextStyle(fontSize: 25, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(width: 125),
-                      Column(
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: addholder,
-                            label: const Text(
-                              "",
-                            ),
-                            icon: const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 65,
-                                  child: Icon(
-                                    Icons.person_pin,
-                                    color: Color.fromARGB(255, 33, 42, 52),
-                                    size: 80,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 144, 145, 72),
-                              fixedSize: const Size.fromHeight(100),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Holders",
-                            style: TextStyle(fontSize: 25, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+              Card(
+                color: const Color.fromARGB(255, 33, 42, 52),
+                margin: const EdgeInsets.all(16.0),
+                child: Center(
+                    child: Text(
+                  '${widget.outerTab}: Specifications tab',
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 144, 145, 72)),
+                )),
               ),
             ],
           ),
         ),
-      ),
+      ],
+    );
+  }
+}
+
+class NestedTabBarconf extends StatefulWidget {
+  const NestedTabBarconf(this.outerTab, {super.key});
+
+  final String outerTab;
+
+  @override
+  State<NestedTabBarconf> createState() => _NestedTabBarStateconf();
+}
+
+class _NestedTabBarStateconf extends State<NestedTabBarconf>
+    with TickerProviderStateMixin {
+  late final TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        TabBar.secondary(
+          controller: _tabController,
+          tabs: const <Widget>[
+            Tab(text: 'New Holder'),
+            Tab(text: 'Current Holders'),
+          ],
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              Card(
+                color: const Color.fromARGB(255, 33, 42, 52),
+                margin: const EdgeInsets.all(16.0),
+                child: Center(
+                    child: Text(
+                  '${widget.outerTab}: Overview tab',
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 144, 145, 72)),
+                )),
+              ),
+              Card(
+                color: const Color.fromARGB(255, 33, 42, 52),
+                margin: const EdgeInsets.all(16.0),
+                child: Center(
+                    child: Text(
+                  '${widget.outerTab}: Specifications tab',
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 144, 145, 72)),
+                )),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

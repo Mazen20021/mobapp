@@ -1,5 +1,5 @@
 name: app
-description: "A new Flutter project."
+description: "Smart Visual Imapred Glasses"
 version: 1.0.0+1
 
 environment:
@@ -24,7 +24,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/exeIcon/icon.png"
+  image_path: "assets/logo.png"
 
 
 flutter:

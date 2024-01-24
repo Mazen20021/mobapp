@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+// import 'package:app/GPS/place_tracker_app.dart';
 
 class Mainpage extends StatefulWidget {
   const Mainpage({super.key});
@@ -72,10 +74,21 @@ class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
           const NestedTabBarconf('Holders'),
           Container(
             color: const Color.fromARGB(255, 33, 42, 52),
-            child: const Center(
-              child: Text(
-                "Track",
-                style: TextStyle(color: Color.fromARGB(255, 144, 145, 72)),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    // SizedBox(
+                    //   height: 800,
+                    //   width: 800,
+                    //   // child: ChangeNotifierProvider(
+                    //   //   create: (context) => AppState(),
+                    //   //   child: const PlaceTrackerApp(),
+                    //   ),
+                    // ),
+                    //tracking(),
+                  ],
+                ),
               ),
             ),
           ),

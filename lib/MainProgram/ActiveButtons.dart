@@ -8,8 +8,11 @@ import 'package:app/Extras/comHelper.dart';
 import 'package:app/DB/DBConnection.dart';
 
 bool ispressed = false;
+final TextEditingController _passwordController = TextEditingController();
+final TextEditingController _emailController = TextEditingController();
 final _formkey = new GlobalKey<FormState>();
 var dbhelper = DatabaseHelper();
+String email = _emailController.text;
 
 class ColorConfigs extends StatefulWidget {
   const ColorConfigs({super.key});
@@ -20,8 +23,6 @@ class ColorConfigs extends StatefulWidget {
 }
 
 class _colorconfigState extends State<ColorConfigs> {
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
   bool cemail = false;
   bool cpass = false;
   bool correctdata = false;
@@ -52,8 +53,8 @@ class _colorconfigState extends State<ColorConfigs> {
       if (correctdata) {
         cemail = false;
         cpass = false;
-        _emailController.text = "";
-        _passwordController.text = "";
+        // _emailController.text = "";
+        // _passwordController.text = "";
         correctdata = false;
         Database db = await DatabaseHelper.instance.database;
         List<Map> result = await db.query(

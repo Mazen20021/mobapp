@@ -16,25 +16,25 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDatabase() async {
-    // Get the application documents directory
     final appDocumentsDirectory = await getApplicationDocumentsDirectory();
-
-    // Create the custom directory if it doesn't exist
     final dbDirectory =
         await Directory(path.join(appDocumentsDirectory.path, 'mobappdb'))
             .create(recursive: true);
-
-    // Get the path for the database file
     final dbPath = path.join(dbDirectory.path, 'SVIG.db');
+    print("Database path: $dbPath");
 
     return await openDatabase(
       dbPath,
       version: 1,
-      onCreate: _createDB,
+      onCreate: (db, version) async {
+        _createUsers(db, version);
+        _createHolders(db, version);
+        print("Creating Users and Holders tables...");
+      },
     );
   }
 
-  void _createDB(Database db, int version) async {
+  void _createUsers(Database db, int version) async {
     await db.execute('''
       CREATE TABLE IF NOT EXISTS Users (
         Name TEXT,
@@ -42,6 +42,18 @@ class DatabaseHelper {
         Password TEXT
       )
     ''');
+    print("Users Created !");
+  }
+
+  void _createHolders(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE IF NOT EXISTS Holders (
+        ID TEXT PRIMARY KEY,
+        Name TEXT,
+        Email TEXT
+      )
+    ''');
+    print("Holders Created !");
   }
 
   Future<int> insertUser(Map<String, dynamic> user) async {
@@ -49,5 +61,10 @@ class DatabaseHelper {
     return await db.insert('Users', user);
   }
 
+  Future<int> addholder(Map<String, dynamic> user) async {
+    Database db = await instance.database;
+    String query = "INSERT INTO Holders (ID, Name , Email) VALUES (?, ? , ?)";
+    return await db.rawInsert(query, [user['ID'], user['Name'], user['Email']]);
+  }
   // Add more methods for CRUD operations (e.g., insert, update, delete, etc.)
 }

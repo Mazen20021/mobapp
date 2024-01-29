@@ -16,6 +16,7 @@ class SignUp extends StatefulWidget {
 bool ispressed = false;
 
 class _signup extends State<SignUp> {
+  List<String> idused = List<String>.empty(growable: true);
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _username = TextEditingController();
@@ -28,10 +29,23 @@ class _signup extends State<SignUp> {
   bool cpass = false;
   bool ccpass = false;
   bool correctdata = false;
+  bool found = false;
 
   void intialState() {
     super.initState();
     DBHelper = DatabaseHelper();
+  }
+
+  bool check_if_found() {
+    if (idused.contains(_emailController.text)) {
+      print('not found');
+      found = true;
+    } else {
+      print('not found');
+      found = false;
+      idused.add(_emailController.text);
+    }
+    return found;
   }
 
   Future<void> _Signup(BuildContext context) async {
@@ -54,22 +68,18 @@ class _signup extends State<SignUp> {
         cemail = false;
         cpass = false;
         ccpass = false;
-        _username.text = "";
-        _emailController.text = "";
-        _passwordController.text = "";
-        _confpass.text = "";
+        // _username.text = "";
+        // _emailController.text = "";
+        // _passwordController.text = "";
+        // _confpass.text = "";
         correctdata = false;
         Map<String, dynamic> user = {
           'name': name,
           'email': email,
           'password': password,
         };
-        int userId = await DatabaseHelper.instance.insertUser(user);
-        if (userId != 0) {
-          // Signup successful, proceed to the login screen
-          Navigator.push(
-              context, MaterialPageRoute(builder: ((_) => const Mainpage())));
-        } else {
+        check_if_found();
+        if (found) {
           // Display an error message if signup fails
           showDialog(
             context: context,
@@ -90,6 +100,31 @@ class _signup extends State<SignUp> {
               ],
             ),
           );
+        } else {
+          int userId = await DatabaseHelper.instance.insertUser(user);
+          if (userId != 0) {
+            // Signup successful, proceed to the login screen
+            print("Holder ADDED");
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                title: const Text(
+                  'Operation Succeeded',
+                  style: TextStyle(fontSize: 20),
+                ),
+                content: Text(
+                  'User Added!',
+                  style: TextStyle(fontSize: 20),
+                ),
+                actions: [
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
+              ),
+            );
+          }
         }
       }
     }

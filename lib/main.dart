@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:app/MainProgram/ColorsConfig.dart';
+import 'package:app/DB/DBConnection.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DatabaseHelper.instance.database;
   runApp(const SVIG()); //start application
 }
 

@@ -231,6 +231,23 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
     return found;
   }
 
+  DatabaseHelper d = DatabaseHelper();
+  Holder? holder;
+
+  void getHolderData() async {
+    List<Map<String, dynamic>> result = await d.fetchHolder();
+    print("I am Here 1");
+    if (result.isNotEmpty) {
+      setState(() {
+        holder = Holder(
+          id: result[0]['ID'] ?? '',
+          name: result[0]['Name'] ?? '',
+        );
+        print("I am Here");
+      });
+    }
+  }
+
   Future<void> _addholder(BuildContext context) async {
     WidgetsFlutterBinding.ensureInitialized();
     DatabaseHelper.instance.database;
@@ -278,9 +295,11 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
             ),
           );
         } else {
+          getHolderData();
           // Add Holder to the Set and the database
           int userId = await DBHelper.addholder(holders);
           if (userId != 0) {
+            print("Email: " + email + "\n");
             print("Holder ADDED");
             showDialog(
               context: context,
@@ -417,38 +436,41 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
                       )),
                     ),
                   ),
-                  const Card(
-                    color: Color.fromARGB(255, 17, 22, 27),
-                    margin: EdgeInsets.all(16.0),
+                  Card(
+                    color: const Color.fromARGB(255, 17, 22, 27),
+                    margin: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        SizedBox(height: 30),
-                        Center(
-                            child: Text(
-                          ' Specifications tab',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 144, 145, 72)),
-                        )),
-                        SizedBox(height: 80),
-                        Row(
-                          children: [
-                            SizedBox(width: 30),
-                            Text(
-                              "Glasses ID",
-                              style: TextStyle(color: Colors.white),
+                        const SizedBox(height: 30),
+                        DataTable(columns: const [
+                          DataColumn(
+                              label: Text(
+                            "GlassesID",
+                            style: TextStyle(color: Colors.white),
+                          )),
+                          DataColumn(
+                              label: Text("Name",
+                                  style: TextStyle(color: Colors.white))),
+                          DataColumn(
+                            label: Text("Condition",
+                                style: TextStyle(color: Colors.white)),
+                          )
+                        ], rows: [
+                          DataRow(cells: [
+                            DataCell(
+                              Text(holder!.id,
+                                  style: TextStyle(color: Colors.white)),
                             ),
-                            SizedBox(width: 80),
-                            Text(
-                              "Name",
-                              style: TextStyle(color: Colors.white),
+                            DataCell(
+                              Text(holder!.name,
+                                  style: TextStyle(color: Colors.white)),
                             ),
-                            SizedBox(width: 60),
-                            Text(
-                              "Condition",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
+                            const DataCell(
+                              Text("Disconnected",
+                                  style: TextStyle(color: Colors.white)),
+                            )
+                          ]),
+                        ]),
                       ],
                     ),
                   ),

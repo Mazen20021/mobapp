@@ -1,15 +1,18 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:app/MainProgram/ActiveButtons.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
+import 'package:app/Pages/MainPage.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._getInstance();
   static Database? _database;
   DatabaseHelper();
   DatabaseHelper._getInstance();
-
+  Holder? holder;
+  List<Holder> holderList = [];
   Future<Database> get database async {
     _database ??= await _initDatabase();
     return _database!;
@@ -66,5 +69,31 @@ class DatabaseHelper {
     String query = "INSERT INTO Holders (ID, Name , Email) VALUES (?, ? , ?)";
     return await db.rawInsert(query, [user['ID'], user['Name'], user['Email']]);
   }
-  // Add more methods for CRUD operations (e.g., insert, update, delete, etc.)
+
+  fetchHolder() async {
+    List<Map<String, dynamic>> result = await _database!.rawQuery(
+      'SELECT ID, Name FROM Holders WHERE Email = ?',
+      [email],
+    );
+    for (var row in result) {
+      String id = row['ID'];
+      String name = row['Name'];
+      Holder holder = Holder(id: id, name: name);
+      holderList.add(holder);
+    }
+    return result;
+    // Add more methods for CRUD operations (e.g., insert, update, delete, etc.)
+  }
+
+  List<String> getlist() {
+    List<String> holder_list = holderList.cast<String>();
+    return holder_list;
+  }
+}
+
+class Holder {
+  final String id;
+  final String name;
+
+  Holder({required this.id, required this.name});
 }

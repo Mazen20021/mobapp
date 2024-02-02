@@ -168,10 +168,17 @@ packages:
     dependency: transitive
     description:
       name: image
+<<<<<<< HEAD
       sha256: "4c68bfd5ae83e700b5204c1e74451e7bf3cf750e6843c6e158289cf56bda018e"
       url: "https://pub.dev"
     source: hosted
     version: "4.1.7"
+=======
+      sha256: "49a0d4b0c12402853d3f227fe7c315601b238d126aa4caa5dbb2dcf99421aa4a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.6"
+>>>>>>> 379fc15 (	modified:   lib/Pages/MainPage.dart)
   intl:
     dependency: "direct main"
     description:
@@ -184,10 +191,17 @@ packages:
     dependency: transitive
     description:
       name: js
+<<<<<<< HEAD
       sha256: c1b2e9b5ea78c45e1a0788d29606ba27dc5f71f019f32ca5140f61ef071838cf
       url: "https://pub.dev"
     source: hosted
     version: "0.7.1"
+=======
+      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.7"
+>>>>>>> 379fc15 (	modified:   lib/Pages/MainPage.dart)
   json_annotation:
     dependency: transitive
     description:

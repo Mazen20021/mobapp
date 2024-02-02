@@ -198,6 +198,9 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
   final TextEditingController _holdername = TextEditingController();
   final TextEditingController _holderid = TextEditingController();
   final _formkey = GlobalKey<FormState>();
+  DatabaseHelper d = DatabaseHelper();
+  Holder? holder;
+  String holderidgot = "", holdernamegot = "";
   bool GID = false;
   bool HName = false;
   bool correctdata = false;
@@ -231,11 +234,11 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
     return found;
   }
 
-  DatabaseHelper d = DatabaseHelper();
-  Holder? holder;
-
   void getHolderData() async {
     List<Map<String, dynamic>> result = await d.fetchHolder();
+    WidgetsFlutterBinding.ensureInitialized();
+    DatabaseHelper.instance.database;
+
     print("I am Here 1");
     if (result.isNotEmpty) {
       setState(() {
@@ -243,6 +246,8 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
           id: result[0]['ID'] ?? '',
           name: result[0]['Name'] ?? '',
         );
+        holderidgot = holder!.id;
+        holdernamegot = holder!.name;
         print("I am Here");
       });
     }
@@ -458,11 +463,11 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
                         ], rows: [
                           DataRow(cells: [
                             DataCell(
-                              Text(holder!.id,
+                              Text(holderidgot,
                                   style: TextStyle(color: Colors.white)),
                             ),
                             DataCell(
-                              Text(holder!.name,
+                              Text(holdernamegot,
                                   style: TextStyle(color: Colors.white)),
                             ),
                             const DataCell(

@@ -331,6 +331,7 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
     }
   }
 
+  void showbot(BuildContext context) {}
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -446,8 +447,8 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
                     margin: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        const SizedBox(height: 30),
-                        DataTable(columns: const [
+                        const SizedBox(height: 15),
+                        DataTable(columnSpacing: 30, columns: const [
                           DataColumn(
                               label: Text(
                             "GlassesID",
@@ -457,22 +458,39 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
                               label: Text("Name",
                                   style: TextStyle(color: Colors.white))),
                           DataColumn(
-                            label: Text("Condition",
+                            label: Text("Location",
+                                style: TextStyle(color: Colors.white)),
+                          ),
+                          DataColumn(
+                            label: Text("  Show",
                                 style: TextStyle(color: Colors.white)),
                           )
                         ], rows: [
                           DataRow(cells: [
                             DataCell(
-                              Text(holderidgot,
-                                  style: TextStyle(color: Colors.white)),
+                              Text("   " + holderidgot,
+                                  style: const TextStyle(color: Colors.white)),
                             ),
                             DataCell(
                               Text(holdernamegot,
-                                  style: TextStyle(color: Colors.white)),
+                                  style: const TextStyle(color: Colors.white)),
                             ),
                             const DataCell(
-                              Text("Disconnected",
+                              Text("  Home",
                                   style: TextStyle(color: Colors.white)),
+                            ),
+                            DataCell(
+                              TextButton.icon(
+                                onPressed: () => showbot(context),
+                                style: TextButton.styleFrom(
+                                  fixedSize: Size.fromRadius(5),
+                                  backgroundColor:
+                                      const Color.fromARGB(0, 144, 145, 72),
+                                ),
+                                label: const Text(""),
+                                icon: const Icon(Icons.radar_rounded,
+                                    color: Colors.white),
+                              ),
                             )
                           ]),
                         ]),

@@ -3,8 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:app/Extras/comHelper.dart';
 import 'package:app/DB/DBConnection.dart';
 import 'package:app/MainProgram/ActiveButtons.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:app/Pages/Setting.dart';
 // import 'package:flutter_blue/flutter_blue.dart';
-// import 'package:app/GPS/place_tracker_app.dart';
+import 'package:app/GPS/Maps.dart';
 
 class Mainpage extends StatefulWidget {
   const Mainpage({super.key});
@@ -29,6 +32,13 @@ class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  void settings() {
+    setState(() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: ((_) => const Settings())));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +53,18 @@ class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
               width: 30,
               color: const Color.fromARGB(255, 33, 42, 52),
             ),
+            const SizedBox(
+              width: 160,
+            ),
+            TextButton.icon(
+                onPressed: settings,
+                style: const ButtonStyle(alignment: Alignment.center),
+                icon: const Icon(
+                  Icons.list,
+                  size: 40,
+                  color: Colors.black,
+                ),
+                label: const Text(""))
           ],
         ),
         bottom: TabBar(
@@ -331,7 +353,22 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
     }
   }
 
-  void showbot(BuildContext context) {}
+  void showbot(BuildContext context, String location) async {
+    final encodedLocation = Uri.encodeComponent(location);
+    final urlString =
+        'https://www.google.com/maps/search/?api=1&query=$encodedLocation';
+    Uri ul = Uri(
+      scheme: 'https',
+      host: 'www.google.com',
+      path: '/maps/search/?api=1&query=$encodedLocation',
+    );
+    if (await canLaunchUrl(ul)) {
+      await launchUrl(ul);
+    } else {
+      throw 'Could not launch $ul';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -406,7 +443,7 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
                               obscureText: false,
                               validator: (val) {
                                 if (val == null || val.isEmpty) {
-                                  return "Please Enter HolderName";
+                                  return "Please Enter Holder's Name";
                                 }
                                 HName = true;
                               },
@@ -481,9 +518,10 @@ class _NestedTabBarStateconf extends State<NestedTabBarconf>
                             ),
                             DataCell(
                               TextButton.icon(
-                                onPressed: () => showbot(context),
+                                onPressed: () =>
+                                    showbot(context, "30°04'13.2N31°14'29.8E"),
                                 style: TextButton.styleFrom(
-                                  fixedSize: Size.fromRadius(5),
+                                  fixedSize: const Size.fromRadius(5),
                                   backgroundColor:
                                       const Color.fromARGB(0, 144, 145, 72),
                                 ),

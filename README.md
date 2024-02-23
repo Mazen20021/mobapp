@@ -1,4 +1,4 @@
-# Smart Visual Impaired Glasses (SVIG) (Not Released Yet)
+![image](https://github.com/Mazen20021/SVIG/assets/131156076/de68a562-0ad7-46bf-8a22-f7bb60a1ceee)# Smart Visual Impaired Glasses (SVIG) (Not Released Yet)
 SVIG is an innovative solution that aims to enhance the visual capabilities of individuals with visual impairments. It leverages advanced technology to provide real-time visual assistance and improve the overall quality of life for visually impaired individuals. SVIG is designed to work in conjunction with a mobile application, offering a seamless and intuitive user experience.
 
 ## Key Features
@@ -53,8 +53,9 @@ SVIG is the result of the collaborative efforts of a dedicated team of professio
 
 ## App Shots
 ### Login Page
-![b8a89211-6234-4c70-87c9-be8abce5d12b](https://github.com/Mazen20021/SVIG/assets/131156076/34799495-cd1e-48ab-b38a-475b639a76b6)
+![Login](https://github.com/Mazen20021/SVIG/assets/131156076/d2f6a4af-90bf-4c04-b39c-d281bd1af2b4)
 ### SignUp Page
+<<<<<<< HEAD
 ![38f91723-8d9c-4124-8432-8efdc5b4145a](https://github.com/Mazen20021/SVIG/assets/131156076/e1ca8392-a88e-4059-a6fe-d0359d307e34)
 ### System InterActions Login
 ![image](https://github.com/Mazen20021/SVIG/assets/131156076/871fca91-8367-4ef9-8ba9-d0c2e0827e39)
@@ -64,3 +65,12 @@ SVIG is the result of the collaborative efforts of a dedicated team of professio
 ![image](https://github.com/Mazen20021/SVIG/assets/131156076/d21c1c69-d166-45f2-8b0d-c2541c00877f)
 
 
+=======
+![Signup](https://github.com/Mazen20021/SVIG/assets/131156076/2f71ed99-d2c0-4b72-acc4-784daea09866)
+### Main Page
+![MainPage](https://github.com/Mazen20021/SVIG/assets/131156076/cc9c7773-09c1-4784-a160-e56ef5e2b401)
+### ADD New Glasses Page
+![NewGlasses](https://github.com/Mazen20021/SVIG/assets/131156076/7f2ae9ff-dd72-467f-9631-24e9094dd363)
+### Server (Feed page)
+![Server Connection](https://github.com/Mazen20021/SVIG/assets/131156076/5b4552d1-e05d-472a-8484-0da445f034b6)
+>>>>>>> c84c20f (Update README.md)

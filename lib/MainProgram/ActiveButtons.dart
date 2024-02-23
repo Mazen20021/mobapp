@@ -112,7 +112,7 @@ class _colorconfigState extends State<ColorConfigs> {
                       "SVIG",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
+                          color: Color.fromARGB(255, 31, 37, 68),
                           fontSize: 50,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold),
@@ -121,6 +121,7 @@ class _colorconfigState extends State<ColorConfigs> {
                     Image.asset(
                       "assets/images/dice-3.png",
                       width: 50,
+                      color: const Color.fromARGB(255, 31, 37, 68),
                     ),
                   ],
                 ),
@@ -158,7 +159,7 @@ class _colorconfigState extends State<ColorConfigs> {
                           ),
                         ),
                         style: const TextStyle(fontSize: 20),
-                        cursorColor: const Color.fromARGB(225, 255, 255, 255),
+                        cursorColor: const Color.fromARGB(225, 31, 37, 68),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -171,7 +172,7 @@ class _colorconfigState extends State<ColorConfigs> {
                         obscureText: true,
                         style: const TextStyle(fontSize: 20),
                         keyboardType: TextInputType.text,
-                        cursorColor: const Color.fromARGB(225, 255, 255, 255),
+                        cursorColor: const Color.fromARGB(225, 31, 37, 68),
                         validator: (val) {
                           if (val == null || val.isEmpty) {
                             return "Please Enter Password";
@@ -201,35 +202,35 @@ class _colorconfigState extends State<ColorConfigs> {
                     ElevatedButton.icon(
                       onPressed: () => _login(context),
                       style: TextButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 31, 35, 38),
+                        backgroundColor: const Color.fromARGB(255, 31, 37, 68),
                       ),
                       label: const ConfigText(
-                          "Login", Color.fromARGB(255, 255, 255, 255), 35),
+                          "Login", Color.fromARGB(255, 255, 208, 236), 35),
                       icon: const Icon(Icons.login_outlined,
-                          color: Colors.white, size: 35),
+                          color: Color.fromARGB(255, 255, 208, 236), size: 35),
                     ),
                     const SizedBox(height: 80),
                     Row(
                       children: [
-                        const SizedBox(width: 80),
+                        const SizedBox(width: 30),
                         const Text(
                           "don't have account ?",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: Color.fromARGB(255, 31, 37, 68),
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(width: 10),
-                        TextButton(
+                        const SizedBox(width: 15),
+                        ElevatedButton(
                           onPressed: signupbot,
                           style: TextButton.styleFrom(
                             backgroundColor:
-                                const Color.fromARGB(0, 114, 145, 0),
+                                const Color.fromARGB(255, 31, 37, 68),
                           ),
                           child: const ConfigText(
-                              "Signup", Color.fromARGB(255, 192, 147, 86), 25),
+                              "Signup", Color.fromARGB(255, 255, 208, 236), 25),
                         ),
                       ],
                     ),

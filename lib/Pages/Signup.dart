@@ -137,189 +137,206 @@ class _signup extends State<SignUp> {
     pass = _passwordController.text;
     confpass = _confpass.text;
     return Scaffold(
-      appBar: AppBar(
-        //actionsIconTheme: Icon(Icons.arrow_back_ios_new_outlined),
-        backgroundColor: const Color.fromARGB(255, 144, 145, 72),
-        title: const Text("SignUp"),
-        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 25),
-      ),
-      body: SingleChildScrollView(
-        child: Form(
-          //scrollDirection: Axis.vertical,
-          key: _formkey,
-          child: Container(
-            child: Center(
-              child: Column(
-                children: [
-                  Column(
-                    //mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SizedBox(height: 10),
-                      Image.asset(
-                        "assets/images/dice-4.png",
-                        width: 200,
-                        color: const Color.fromARGB(255, 144, 145, 72),
-                      ),
-                      //medium Part
-                      const SizedBox(height: 30),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 350,
-                            child: TextFormField(
-                              controller: _username,
-                              obscureText: false,
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return "Please Enter UserName";
-                                }
-                                cuser = true;
-                              },
-                              onSaved: (val) => _username.text = val!,
-                              style: const TextStyle(fontSize: 20),
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(60)),
-                                  borderSide: BorderSide(
-                                      style: BorderStyle.solid,
-                                      color: Colors.transparent),
-                                ),
-                                prefixIcon: Icon(Icons.person),
-                                labelText: 'UserName',
-                                labelStyle: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+        appBar: AppBar(
+          //actionsIconTheme: Icon(Icons.arrow_back_ios_new_outlined),
+          backgroundColor: const Color.fromARGB(255, 31, 37, 68),
+          title: const Text("SignUp"),
+          titleTextStyle: const TextStyle(
+              color: Color.fromARGB(255, 255, 208, 236), fontSize: 25),
+        ),
+        backgroundColor: const Color.fromARGB(206, 31, 37, 68),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/dice-6.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Form(
+              //scrollDirection: Axis.vertical,
+              key: _formkey,
+              child: Center(
+                child: Container(
+                  width: 550,
+                  height: 790,
+                  child: Card(
+                    margin: const EdgeInsets.all(35),
+                    color: Color.fromARGB(255, 255, 208, 236),
+                    child: Column(
+                      children: [
+                        Column(
+                          //mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedBox(height: 10),
+                            Image.asset(
+                              "assets/images/dice-4.png",
+                              width: 200,
+                              color: const Color.fromARGB(255, 31, 37, 68),
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          SizedBox(
-                            width: 350,
-                            child: TextFormField(
-                              controller: _emailController,
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return "Please Enter Email";
-                                }
-                                if (!validateEmail(val)) {
-                                  return "Please Enter Valid Email Formate";
-                                }
-                                cemail = true;
-                                return null;
-                              },
-                              onSaved: (val) => _username.text = val!,
-                              autocorrect: true,
-                              obscureText: false,
-                              style: const TextStyle(fontSize: 20),
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(60)),
-                                  borderSide: BorderSide(
-                                      style: BorderStyle.solid,
-                                      color: Color.fromARGB(255, 144, 145, 72)),
+                            //medium Part
+                            const SizedBox(height: 50),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  width: 300,
+                                  child: TextFormField(
+                                    controller: _username,
+                                    obscureText: false,
+                                    validator: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        return "Please Enter UserName";
+                                      }
+                                      cuser = true;
+                                    },
+                                    onSaved: (val) => _username.text = val!,
+                                    style: const TextStyle(fontSize: 20),
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(60)),
+                                        borderSide: BorderSide(
+                                            style: BorderStyle.solid,
+                                            color: Colors.transparent),
+                                      ),
+                                      prefixIcon: Icon(Icons.person),
+                                      labelText: 'UserName',
+                                      labelStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                prefixIcon: Icon(Icons.email),
-                                labelText: 'Email',
-                                labelStyle: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                  width: 300,
+                                  child: TextFormField(
+                                    controller: _emailController,
+                                    validator: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        return "Please Enter Email";
+                                      }
+                                      if (!validateEmail(val)) {
+                                        return "Please Enter Valid Email Formate";
+                                      }
+                                      cemail = true;
+                                      return null;
+                                    },
+                                    onSaved: (val) => _username.text = val!,
+                                    autocorrect: true,
+                                    obscureText: false,
+                                    style: const TextStyle(fontSize: 20),
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(60)),
+                                        borderSide: BorderSide(
+                                            style: BorderStyle.solid,
+                                            color: Color.fromARGB(
+                                                255, 144, 145, 72)),
+                                      ),
+                                      prefixIcon: Icon(Icons.email),
+                                      labelText: 'Email',
+                                      labelStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          SizedBox(
-                            width: 350,
-                            child: TextFormField(
-                              controller: _passwordController,
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return "Please Enter Password";
-                                }
-                                cpass = true;
-                              },
-                              onSaved: (val) => _username.text = val!,
-                              autocorrect: true,
-                              obscureText: true,
-                              style: const TextStyle(fontSize: 20),
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(60)),
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                  width: 300,
+                                  child: TextFormField(
+                                    controller: _passwordController,
+                                    validator: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        return "Please Enter Password";
+                                      }
+                                      cpass = true;
+                                    },
+                                    onSaved: (val) => _username.text = val!,
+                                    autocorrect: true,
+                                    obscureText: true,
+                                    style: const TextStyle(fontSize: 20),
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(60)),
+                                      ),
+                                      prefixIcon: Icon(Icons.lock),
+                                      labelText: 'Password',
+                                      labelStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                labelStyle: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                  width: 300,
+                                  child: TextFormField(
+                                    controller: _confpass,
+                                    validator: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        return "Please Enter ConfirmPassword";
+                                      }
+                                      if (_confpass.text !=
+                                          _passwordController.text) {
+                                        return "Password Does't Match";
+                                      }
+                                      ccpass = true;
+                                    },
+                                    onSaved: (val) => _username.text = val!,
+                                    autocorrect: true,
+                                    obscureText: true,
+                                    style: const TextStyle(fontSize: 20),
+                                    keyboardType: TextInputType.text,
+                                    decoration: const InputDecoration(
+                                        border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(60)),
+                                            borderSide: BorderSide(
+                                                style: BorderStyle.solid,
+                                                color: Color.fromARGB(
+                                                    226, 114, 145, 0))),
+                                        prefixIcon: Icon(Icons.lock),
+                                        labelText: 'ConfirmPassword',
+                                        labelStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(height: 30),
+                              ],
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          SizedBox(
-                            width: 350,
-                            child: TextFormField(
-                              controller: _confpass,
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return "Please Enter ConfirmPassword";
-                                }
-                                if (_confpass.text !=
-                                    _passwordController.text) {
-                                  return "Password Does't Match";
-                                }
-                                ccpass = true;
-                              },
-                              onSaved: (val) => _username.text = val!,
-                              autocorrect: true,
-                              obscureText: true,
-                              style: const TextStyle(fontSize: 20),
-                              keyboardType: TextInputType.text,
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(60)),
-                                      borderSide: BorderSide(
-                                          style: BorderStyle.solid,
-                                          color: Color.fromARGB(
-                                              226, 114, 145, 0))),
-                                  prefixIcon: Icon(Icons.lock),
-                                  labelText: 'ConfirmPassword',
-                                  labelStyle: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                            Column(
+                              children: [
+                                ElevatedButton.icon(
+                                  onPressed: () => _Signup(context),
+                                  style: TextButton.styleFrom(
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 144, 145, 72),
+                                  ),
+                                  label: const ConfigText("SignUp",
+                                      Color.fromARGB(255, 255, 255, 255), 35),
+                                  icon: const Icon(
+                                      Icons.account_circle_outlined,
+                                      color: Colors.white),
+                                ),
+                              ],
                             ),
-                          ),
-                          const SizedBox(height: 30),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          ElevatedButton.icon(
-                            onPressed: () => _Signup(context),
-                            style: TextButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 144, 145, 72),
-                            ),
-                            label: const ConfigText("SignUp",
-                                Color.fromARGB(255, 255, 255, 255), 35),
-                            icon: const Icon(Icons.account_circle_outlined,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

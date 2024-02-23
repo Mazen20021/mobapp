@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:app/MainProgram/ColorsConfig.dart';
 import 'package:app/DB/DBConnection.dart';
+import 'package:app/MainProgram/ActiveButtons.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   DatabaseHelper.instance.database;
+
   runApp(const SVIG()); //start application
 }
 
@@ -18,10 +20,16 @@ class SVIG extends StatelessWidget {
     return const MaterialApp(
         //home of the app and Scaffold for making app look nicer
         home: Scaffold(
+      body: Center(
+        child: ColorConfigs(),
+      ),
       //the app is consists of head , body
       //to get decoration
-      body: ColorConfig(
-          [Color.fromARGB(144, 114, 145, 0), Color.fromARGB(80, 42, 53, 0)]),
+      backgroundColor: Color.fromARGB(255, 225, 213, 201),
+      // ColorConfig([
+      //   Color.fromARGB(255, 212, 201, 226),
+      //   Color.fromARGB(255, 213, 201, 225)
+      // ]),
     ));
   }
 }

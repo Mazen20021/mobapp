@@ -201,8 +201,7 @@ class _colorconfigState extends State<ColorConfigs> {
                     ElevatedButton.icon(
                       onPressed: () => _login(context),
                       style: TextButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 144, 145, 73),
+                        backgroundColor: const Color.fromARGB(255, 31, 35, 38),
                       ),
                       label: const ConfigText(
                           "Login", Color.fromARGB(255, 255, 255, 255), 35),
@@ -230,7 +229,7 @@ class _colorconfigState extends State<ColorConfigs> {
                                 const Color.fromARGB(0, 114, 145, 0),
                           ),
                           child: const ConfigText(
-                              "Signup", Color.fromARGB(255, 255, 255, 255), 25),
+                              "Signup", Color.fromARGB(255, 192, 147, 86), 25),
                         ),
                       ],
                     ),

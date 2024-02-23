@@ -19,9 +19,11 @@ class Addholder extends StatefulWidget {
 }
 
 class _add extends State<Addholder> with TickerProviderStateMixin {
+  //List<DataRow> _tableRows = [];
   List<String> idused = List<String>.empty(growable: true);
-  var DBHelper = DatabaseHelper();
+  List<Map<String, dynamic>> holdersList = [];
   late final TabController _tabController;
+  var DBHelper = DatabaseHelper();
   final TextEditingController _holdername = TextEditingController();
   final TextEditingController _holderid = TextEditingController();
   final _formkey = GlobalKey<FormState>();
@@ -56,6 +58,7 @@ class _add extends State<Addholder> with TickerProviderStateMixin {
     } else {
       print('not found');
       found = false;
+      //_addholders(context);
       idused.add(_holderid.text);
     }
     return found;
@@ -89,6 +92,7 @@ class _add extends State<Addholder> with TickerProviderStateMixin {
     final form = _formkey.currentState;
     String HolderID = _holderid.text;
     String HolderName = _holdername.text;
+
     if (GID && HName) {
       correctdata = true;
     }
@@ -161,188 +165,251 @@ class _add extends State<Addholder> with TickerProviderStateMixin {
     }
   }
 
+  // void _addholders(BuildContext context) {
+  //   final form = _formkey.currentState;
+  //   if (form!.validate()) {
+  //     // Create a new DataRow with the entered values
+  //     DataRow newRow = DataRow(cells: [
+  //       DataCell(
+  //         Text("   " + _holderid.text,
+  //             style: const TextStyle(color: Colors.white)),
+  //       ),
+  //       DataCell(
+  //         Text(_holdername.text, style: const TextStyle(color: Colors.white)),
+  //       ),
+  //       const DataCell(
+  //         Text("  Home", style: TextStyle(color: Colors.white)),
+  //       ),
+  //       DataCell(
+  //         TextButton.icon(
+  //           onPressed: () => showbot(context, "30°04'13.2N31°14'29.8E"),
+  //           style: TextButton.styleFrom(
+  //             fixedSize: const Size.fromRadius(5),
+  //             backgroundColor: const Color.fromARGB(0, 144, 145, 72),
+  //           ),
+  //           label: const Text(""),
+  //           icon: const Icon(Icons.radar_rounded, color: Colors.white),
+  //         ),
+  //       )
+  //     ]);
+
+  //     // Add the new DataRow to the DataTable rows
+  //     setState(() {
+  //       _tableRows.add(newRow);
+  //     });
+
+  //     // Clear the text fields after adding the holder
+  //     _holderid.clear();
+  //     _holdername.clear();
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 225, 213, 201),
+            backgroundColor: const Color.fromARGB(255, 255, 208, 236),
             title: Row(children: [
-              const Text("SVIG"),
+              const Text("SVIG",
+                  style: TextStyle(color: Color.fromARGB(255, 31, 37, 68))),
               const SizedBox(width: 5),
               Image.asset(
                 "assets/images/dice-3.png",
                 width: 30,
-                color: const Color.fromARGB(255, 33, 42, 52),
+                color: const Color.fromARGB(255, 31, 37, 68),
               )
             ])),
-        key: _formkey,
-        body: Form(
-            child: Column(
-          children: <Widget>[
-            TabBar.secondary(
-              controller: _tabController,
-              tabs: const <Widget>[
-                Tab(text: 'New Holder'),
-                Tab(text: 'Current Holders'),
-              ],
+        backgroundColor: const Color.fromARGB(240, 31, 37, 68),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/dice-6.png"),
+              fit: BoxFit.cover,
             ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
+          ),
+          child: Form(
+              key: _formkey,
+              child: Column(
                 children: <Widget>[
-                  Card(
-                    color: const Color.fromARGB(255, 17, 22, 27),
-                    margin: const EdgeInsets.all(16.0),
-                    child: SingleChildScrollView(
-                      child: Center(
-                          child: Column(
-                        children: [
-                          const SizedBox(height: 50),
-                          const Text(
-                            'ADD Holders',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontSize: 40),
-                          ),
-                          const SizedBox(height: 80),
-                          SizedBox(
-                            width: 350,
-                            child: TextFormField(
-                              cursorColor: Colors.white,
-                              controller: _holderid,
-                              obscureText: false,
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return "Please Enter GlassesID";
-                                }
-                                GID = true;
-                              },
-                              onSaved: (val) => _holderid.text = val!,
-                              style: const TextStyle(
-                                  fontSize: 20, color: Colors.white),
-                              keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(60)),
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.solid,
-                                    color: Color.fromARGB(255, 255, 255, 255),
+                  Expanded(
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: <Widget>[
+                        Card(
+                          color: const Color.fromARGB(255, 255, 208, 236),
+                          margin: const EdgeInsets.all(16.0),
+                          child: SingleChildScrollView(
+                            child: Center(
+                                child: Column(
+                              children: [
+                                const SizedBox(height: 50),
+                                const Text(
+                                  'ADD Holders',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 31, 37, 68),
+                                      fontSize: 40),
+                                ),
+                                const SizedBox(height: 100),
+                                SizedBox(
+                                  width: 350,
+                                  child: TextFormField(
+                                    cursorColor:
+                                        const Color.fromARGB(255, 31, 37, 68),
+                                    controller: _holderid,
+                                    obscureText: false,
+                                    validator: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        return "Please Enter GlassesID";
+                                      }
+                                      GID = true;
+                                    },
+                                    onSaved: (val) => _holderid.text = val!,
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        color: Color.fromARGB(255, 31, 37, 68)),
+                                    keyboardType: TextInputType.number,
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(60)),
+                                        borderSide: BorderSide(
+                                          style: BorderStyle.solid,
+                                          color:
+                                              Color.fromARGB(255, 31, 37, 68),
+                                        ),
+                                      ),
+                                      prefixIcon: Icon(Icons.person),
+                                      labelText: 'GlassesID',
+                                      labelStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                prefixIcon: Icon(Icons.person),
-                                labelText: 'GlassesID',
-                                labelStyle: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 50),
-                          SizedBox(
-                            width: 350,
-                            child: TextFormField(
-                              cursorColor: Colors.white,
-                              controller: _holdername,
-                              obscureText: false,
-                              validator: (val) {
-                                if (val == null || val.isEmpty) {
-                                  return "Please Enter Holder's Name";
-                                }
-                                HName = true;
-                              },
-                              onSaved: (val) => _holdername.text = val!,
-                              style: const TextStyle(
-                                  fontSize: 20, color: Colors.white),
-                              keyboardType: TextInputType.name,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(60)),
-                                  borderSide: BorderSide(
-                                    style: BorderStyle.solid,
-                                    color: Color.fromARGB(255, 255, 255, 255),
+                                const SizedBox(height: 80),
+                                SizedBox(
+                                  width: 350,
+                                  child: TextFormField(
+                                    cursorColor:
+                                        const Color.fromARGB(255, 31, 37, 68),
+                                    controller: _holdername,
+                                    obscureText: false,
+                                    validator: (val) {
+                                      if (val == null || val.isEmpty) {
+                                        return "Please Enter Holder's Name";
+                                      }
+                                      HName = true;
+                                    },
+                                    onSaved: (val) => _holdername.text = val!,
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        color: Color.fromARGB(255, 31, 37, 68)),
+                                    keyboardType: TextInputType.name,
+                                    decoration: const InputDecoration(
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(60)),
+                                        borderSide: BorderSide(
+                                          style: BorderStyle.solid,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255),
+                                        ),
+                                      ),
+                                      prefixIcon: Icon(Icons.person),
+                                      labelText: 'HolderName',
+                                      labelStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                prefixIcon: Icon(Icons.person),
-                                labelText: 'HolderName',
-                                labelStyle: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                                const SizedBox(height: 150),
+                                TextButton.icon(
+                                    style: ButtonStyle(
+                                      padding:
+                                          MaterialStateProperty.all<EdgeInsets>(
+                                              EdgeInsets.zero),
+                                      minimumSize:
+                                          MaterialStateProperty.all<Size>(
+                                              Size.zero),
+                                      alignment: Alignment.center,
+                                    ),
+                                    onPressed: () => _addholder(context),
+                                    icon: const Icon(Icons.add_box_rounded,
+                                        size: 80,
+                                        color: Color.fromARGB(255, 31, 37, 68)),
+                                    label: const Text(
+                                      "",
+                                    )),
+                                const SizedBox(height: 20),
+                              ],
+                            )),
                           ),
-                          const SizedBox(height: 80),
-                          ElevatedButton.icon(
-                              onPressed: () => _addholder(context),
-                              icon: const Icon(Icons.add_box_rounded, size: 30),
-                              label: const Text("ADD",
-                                  style: TextStyle(fontSize: 20))),
-                          const SizedBox(height: 20),
-                        ],
-                      )),
-                    ),
-                  ),
-                  Card(
-                    color: const Color.fromARGB(255, 17, 22, 27),
-                    margin: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 15),
-                        DataTable(columnSpacing: 30, columns: const [
-                          DataColumn(
-                              label: Text(
-                            "GlassesID",
-                            style: TextStyle(color: Colors.white),
-                          )),
-                          DataColumn(
-                              label: Text("Name",
-                                  style: TextStyle(color: Colors.white))),
-                          DataColumn(
-                            label: Text("Location",
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                          DataColumn(
-                            label: Text("  Show",
-                                style: TextStyle(color: Colors.white)),
-                          )
-                        ], rows: [
-                          DataRow(cells: [
-                            DataCell(
-                              Text("   " + holderidgot,
-                                  style: const TextStyle(color: Colors.white)),
+                        ),
+                        Card(
+
+                            //   color: const Color.fromARGB(255, 17, 22, 27),
+                            //   margin: const EdgeInsets.all(16.0),
+                            //   child: Column(
+                            //     children: [
+                            //       const SizedBox(height: 15),
+                            //       DataTable(columnSpacing: 30, columns: const [
+                            //         DataColumn(
+                            //             label: Text(
+                            //           "GlassesID",
+                            //           style: TextStyle(color: Colors.white),
+                            //         )),
+                            //         DataColumn(
+                            //             label: Text("Name",
+                            //                 style: TextStyle(color: Colors.white))),
+                            //         DataColumn(
+                            //           label: Text("Location",
+                            //               style: TextStyle(color: Colors.white)),
+                            //         ),
+                            //         DataColumn(
+                            //           label: Text("  Show",
+                            //               style: TextStyle(color: Colors.white)),
+                            //         )
+                            //       ], rows: [
+                            //         DataRow(cells: [
+                            //           DataCell(
+                            //             Text("   " + holderidgot,
+                            //                 style: const TextStyle(
+                            //                     color: Colors.white)),
+                            //           ),
+                            //           DataCell(
+                            //             Text(holdernamegot,
+                            //                 style: const TextStyle(
+                            //                     color: Colors.white)),
+                            //           ),
+                            //           const DataCell(
+                            //             Text("  Home",
+                            //                 style: TextStyle(color: Colors.white)),
+                            //           ),
+                            //           DataCell(
+                            //             TextButton.icon(
+                            //               onPressed: () => showbot(
+                            //                   context, "30°04'13.2N31°14'29.8E"),
+                            //               style: TextButton.styleFrom(
+                            //                 fixedSize: const Size.fromRadius(5),
+                            //                 backgroundColor: const Color.fromARGB(
+                            //                     0, 144, 145, 72),
+                            //               ),
+                            //               label: const Text(""),
+                            //               icon: const Icon(Icons.radar_rounded,
+                            //                   color: Colors.white),
+                            //             ),
+                            //           )
+                            //         ]),
+                            //       ]),
+                            //     ],
+                            //   ),
                             ),
-                            DataCell(
-                              Text(holdernamegot,
-                                  style: const TextStyle(color: Colors.white)),
-                            ),
-                            const DataCell(
-                              Text("  Home",
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                            DataCell(
-                              TextButton.icon(
-                                onPressed: () =>
-                                    showbot(context, "30°04'13.2N31°14'29.8E"),
-                                style: TextButton.styleFrom(
-                                  fixedSize: const Size.fromRadius(5),
-                                  backgroundColor:
-                                      const Color.fromARGB(0, 144, 145, 72),
-                                ),
-                                label: const Text(""),
-                                icon: const Icon(Icons.radar_rounded,
-                                    color: Colors.white),
-                              ),
-                            )
-                          ]),
-                        ]),
                       ],
                     ),
                   ),
                 ],
-              ),
-            ),
-          ],
-        )));
+              )),
+        ));
   }
 }

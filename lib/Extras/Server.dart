@@ -53,7 +53,7 @@ class _ServerState extends State<Server> {
           url = '$baseUrl/stream'; // Specify the 'stream' endpoint
           response = await http.post(Uri.parse(url)).timeout(timeoutDuration);
         } else {
-          throw ArgumentError('Invalid feature');
+          serverData = "Connection Time Out (Invalid feature)";
         }
 
         if (response.statusCode == 200) {
@@ -64,8 +64,7 @@ class _ServerState extends State<Server> {
             connectionFound = true;
           });
         } else {
-          serverData = "Connection Time Out";
-          throw Exception('Failed to load data');
+          serverData = "Connection Time Out (Failed to load data)";
         }
       } catch (error) {
         print('Error: $error');
@@ -80,7 +79,6 @@ class _ServerState extends State<Server> {
           });
         }
       }
-
       // Wait for a short duration before the next iteration
       await Future.delayed(const Duration(seconds: 1));
     }

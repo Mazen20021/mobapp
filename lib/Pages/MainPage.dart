@@ -10,6 +10,7 @@ import 'package:app/Pages/Add.dart';
 // import 'package:flutter_blue/flutter_blue.dart';
 import 'package:app/GPS/Maps.dart';
 import 'package:app/Extras/Server.dart';
+import 'package:app/Extras/button.dart';
 
 class Mainpage extends StatefulWidget {
   const Mainpage({super.key});
@@ -94,14 +95,15 @@ class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 225, 213, 201),
+        backgroundColor: Color.fromARGB(255, 255, 208, 236),
         title: Row(children: [
-          const Text("SVIG"),
+          const Text("SVIG",
+              style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
           const SizedBox(width: 5),
           Image.asset(
             "assets/images/dice-3.png",
             width: 30,
-            color: const Color.fromARGB(255, 33, 42, 52),
+            color: Color.fromARGB(255, 0, 0, 0),
           ),
           const SizedBox(
             width: 192,
@@ -122,88 +124,94 @@ class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
           )
         ]),
       ),
-      backgroundColor: const Color.fromARGB(255, 31, 35, 38),
+      backgroundColor: const Color.fromARGB(255, 225, 213, 201),
       body: Container(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                    width: 200,
-                    height: 400,
-                    child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(104, 51, 57, 115),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero,
-                            )),
-                        onPressed: Feed,
-                        icon: const Icon(
-                          Icons.feedback_outlined,
-                          size: 100,
-                          color: Color.fromARGB(176, 197, 147, 76),
-                        ),
-                        label: const Text(""))),
-                SizedBox(
-                    width: 211,
-                    height: 400,
-                    child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 31, 35, 38),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero,
-                            )),
-                        onPressed: Add,
-                        icon: const Icon(
-                          Icons.add_circle_outlined,
-                          size: 100,
-                          color: Color.fromARGB(255, 197, 147, 76),
-                        ),
-                        label: const Text(""))),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                    width: 200,
-                    height: 370,
-                    child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(179, 75, 121, 77),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero,
-                            )),
-                        onPressed: Nav,
-                        icon: const Icon(
-                          Icons.emergency_share,
-                          size: 100,
-                          color: Color.fromARGB(164, 33, 120, 234),
-                        ),
-                        label: const Text(""))),
-                SizedBox(
-                    width: 211,
-                    height: 370,
-                    child: ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 208, 185, 135),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero,
-                            )),
-                        onPressed: Stream,
-                        icon: const Icon(
-                          Icons.camera_indoor_rounded,
-                          size: 100,
-                          color: Color.fromARGB(255, 31, 35, 38),
-                        ),
-                        label: const Text(""))),
-              ],
-            ),
-          ],
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/dice-6.png"),
+            fit: BoxFit.fill,
+          ),
         ),
+        child: Card(
+            surfaceTintColor: Color.fromARGB(255, 9, 76, 114),
+            shadowColor: Colors.black,
+            margin: EdgeInsets.all(30),
+            color: Color.fromARGB(255, 73, 52, 52).withOpacity(0.8),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 15,
+                    ),
+                    ArcedSquareButton(
+                      [
+                        Color.fromARGB(255, 74, 0, 32),
+                        Color.fromARGB(255, 222, 2, 97)
+                      ],
+                      Color.fromARGB(255, 255, 255, 255),
+                      icon: Icons.feedback_rounded,
+                      label: "Feed",
+                      onPressed: Feed,
+                    ),
+                    SizedBox(
+                      width: 100,
+                    ),
+                    ArcedSquareButton(
+                      [
+                        Color.fromARGB(255, 255, 105, 94),
+                        Color.fromARGB(255, 248, 42, 26),
+                      ],
+                      Color.fromARGB(225, 240, 250, 106),
+                      icon: Icons.add_box_rounded,
+                      label: "ADD",
+                      onPressed: Add,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 200,
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 15,
+                      ),
+                      ArcedSquareButton(
+                        [
+                          Color.fromARGB(255, 16, 195, 104),
+                          Color.fromARGB(224, 20, 105, 80)
+                        ],
+                        Color.fromARGB(255, 250, 123, 91),
+                        icon: Icons.emergency_share,
+                        label: "Track",
+                        onPressed: Track,
+                      ),
+                      SizedBox(
+                        width: 100,
+                      ),
+                      ArcedSquareButton(
+                        [
+                          Color.fromARGB(255, 253, 82, 64),
+                          Color.fromARGB(255, 232, 187, 78)
+                        ],
+                        Color.fromARGB(255, 255, 219, 219),
+                        icon: Icons.video_camera_front_rounded,
+                        label: "Stream",
+                        onPressed: Stream,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )),
       ),
     );
   }

@@ -127,74 +127,77 @@ class _colorconfigState extends State<ColorConfigs> {
                 ),
                 //medium Part
                 const SizedBox(height: 100),
-                Column(
-                  children: [
-                    const SizedBox(width: 30),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      margin: const EdgeInsets.only(top: 20),
-                      child: TextFormField(
-                        controller: _emailController,
-                        obscureText: false,
-                        validator: (val) {
-                          if (val == null || val.isEmpty) {
-                            return "Please Enter Email";
-                          }
-                          if (!validateEmail(val)) {
-                            return "Please Enter Valid Email Formate";
-                          }
-                          cemail = true;
-                        },
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(60)),
-                              borderSide: BorderSide(
-                                  style: BorderStyle.solid,
-                                  color: Color.fromARGB(226, 114, 145, 0))),
-                          prefixIcon: Icon(Icons.mail),
-                          labelText: "Email",
-                          labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        style: const TextStyle(fontSize: 20),
-                        cursorColor: const Color.fromARGB(225, 31, 37, 68),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      margin: const EdgeInsets.only(top: 5),
-                      child: TextFormField(
-                        controller: _passwordController,
-                        autocorrect: true,
-                        obscureText: true,
-                        style: const TextStyle(fontSize: 20),
-                        keyboardType: TextInputType.text,
-                        cursorColor: const Color.fromARGB(225, 31, 37, 68),
-                        validator: (val) {
-                          if (val == null || val.isEmpty) {
-                            return "Please Enter Password";
-                          }
-                          cpass = true;
-                        },
-                        decoration: const InputDecoration(
+                Container(
+                  height: 300,
+                  child: Column(
+                    children: [
+                      const SizedBox(width: 30),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        margin: const EdgeInsets.only(top: 20),
+                        child: TextFormField(
+                          controller: _emailController,
+                          obscureText: false,
+                          validator: (val) {
+                            if (val == null || val.isEmpty) {
+                              return "Please Enter Email";
+                            }
+                            if (!validateEmail(val)) {
+                              return "Please Enter Valid Email Formate";
+                            }
+                            cemail = true;
+                          },
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(60)),
                                 borderSide: BorderSide(
                                     style: BorderStyle.solid,
                                     color: Color.fromARGB(226, 114, 145, 0))),
-                            prefixIcon: Icon(Icons.lock),
-                            labelText: "Password",
+                            prefixIcon: Icon(Icons.mail),
+                            labelText: "Email",
                             labelStyle: TextStyle(
                               fontWeight: FontWeight.bold,
-                            )),
+                            ),
+                          ),
+                          style: const TextStyle(fontSize: 20),
+                          cursorColor: const Color.fromARGB(225, 31, 37, 68),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 50),
-                  ],
+                      const SizedBox(height: 20),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        margin: const EdgeInsets.only(top: 5),
+                        child: TextFormField(
+                          controller: _passwordController,
+                          autocorrect: true,
+                          obscureText: true,
+                          style: const TextStyle(fontSize: 20),
+                          keyboardType: TextInputType.text,
+                          cursorColor: const Color.fromARGB(225, 31, 37, 68),
+                          validator: (val) {
+                            if (val == null || val.isEmpty) {
+                              return "Please Enter Password";
+                            }
+                            cpass = true;
+                          },
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(60)),
+                                  borderSide: BorderSide(
+                                      style: BorderStyle.solid,
+                                      color: Color.fromARGB(226, 114, 145, 0))),
+                              prefixIcon: Icon(Icons.lock),
+                              labelText: "Password",
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ),
+                      ),
+                      const SizedBox(height: 50),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Column(

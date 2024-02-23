@@ -148,7 +148,7 @@ class _signup extends State<SignUp> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/dice-6.png"),
+              image: AssetImage("assets/images/Back3.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -162,7 +162,8 @@ class _signup extends State<SignUp> {
                   height: 790,
                   child: Card(
                     margin: const EdgeInsets.all(35),
-                    color: Color.fromARGB(255, 255, 208, 236),
+                    color: const Color.fromARGB(255, 255, 208, 236)
+                        .withOpacity(0.9),
                     child: Column(
                       children: [
                         Column(
@@ -301,7 +302,7 @@ class _signup extends State<SignUp> {
                                             borderSide: BorderSide(
                                                 style: BorderStyle.solid,
                                                 color: Color.fromARGB(
-                                                    226, 114, 145, 0))),
+                                                    255, 31, 37, 68))),
                                         prefixIcon: Icon(Icons.lock),
                                         labelText: 'ConfirmPassword',
                                         labelStyle: TextStyle(
@@ -318,7 +319,7 @@ class _signup extends State<SignUp> {
                                   onPressed: () => _Signup(context),
                                   style: TextButton.styleFrom(
                                     backgroundColor:
-                                        const Color.fromARGB(255, 144, 145, 72),
+                                        const Color.fromARGB(255, 31, 37, 68),
                                   ),
                                   label: const ConfigText("SignUp",
                                       Color.fromARGB(255, 255, 255, 255), 35),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app/MainProgram/ColorsConfig.dart';
 import 'package:app/DB/DBConnection.dart';
 import 'package:app/MainProgram/ActiveButtons.dart';
 
@@ -17,14 +16,22 @@ class SVIG extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //main widget
-    return const MaterialApp(
+    return MaterialApp(
         //home of the app and Scaffold for making app look nicer
         home: Scaffold(
-      body: Center(
-        child: Card(
-            margin: EdgeInsets.all(15),
-            color: Color.fromARGB(255, 255, 208, 236),
-            child: ColorConfigs()),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/Back2.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Card(
+              margin: EdgeInsets.all(15),
+              color: Color.fromARGB(255, 255, 208, 236).withOpacity(0.95),
+              child: ColorConfigs()),
+        ),
       ),
       backgroundColor: Color.fromARGB(255, 31, 37, 68),
       // ColorConfig([

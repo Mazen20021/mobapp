@@ -1,4 +1,4 @@
-![image](https://github.com/Mazen20021/SVIG/assets/131156076/de68a562-0ad7-46bf-8a22-f7bb60a1ceee)# Smart Visual Impaired Glasses (SVIG) (Not Released Yet)
+# Smart Visual Impaired Glasses (SVIG) (Not Released Yet)
 SVIG is an innovative solution that aims to enhance the visual capabilities of individuals with visual impairments. It leverages advanced technology to provide real-time visual assistance and improve the overall quality of life for visually impaired individuals. SVIG is designed to work in conjunction with a mobile application, offering a seamless and intuitive user experience.
 
 ## Key Features

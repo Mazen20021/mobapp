@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:app/Extras/comHelper.dart';
-import 'package:app/DB/DBConnection.dart';
-import 'package:app/MainProgram/ActiveButtons.dart';
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:app/Pages/Setting.dart';
 import 'package:app/Pages/Add.dart';
-// import 'package:flutter_blue/flutter_blue.dart';
-import 'package:app/GPS/Maps.dart';
 import 'package:app/Extras/Server.dart';
 import 'package:app/Extras/button.dart';
 
@@ -103,10 +95,10 @@ class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
           Image.asset(
             "assets/images/dice-3.png",
             width: 30,
-            color: Color.fromARGB(255, 0, 0, 0),
+            color: const Color.fromARGB(255, 0, 0, 0),
           ),
           const SizedBox(
-            width: 192,
+            width: 190,
           ),
           TextButton.icon(
             onPressed: settings,
@@ -133,76 +125,77 @@ class _mainpage extends State<Mainpage> with TickerProviderStateMixin {
           ),
         ),
         child: Card(
-            surfaceTintColor: Color.fromARGB(255, 9, 76, 114),
+            elevation: BorderSide.strokeAlignCenter,
+            surfaceTintColor: const Color.fromARGB(255, 9, 76, 114),
             shadowColor: Colors.black,
-            margin: EdgeInsets.all(30),
-            color: Color.fromARGB(255, 73, 52, 52).withOpacity(0.8),
+            margin: const EdgeInsets.all(30),
+            color: const Color.fromARGB(255, 97, 92, 92).withOpacity(0.5),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50),
             ),
             child: Column(
               children: [
-                SizedBox(
-                  height: 100,
+                const SizedBox(
+                  height: 150,
                 ),
                 Row(
                   children: [
-                    SizedBox(
-                      width: 15,
+                    const SizedBox(
+                      width: 30,
                     ),
                     ArcedSquareButton(
-                      [
+                      const [
                         Color.fromARGB(255, 74, 0, 32),
                         Color.fromARGB(255, 222, 2, 97)
                       ],
-                      Color.fromARGB(255, 255, 255, 255),
+                      const Color.fromARGB(255, 255, 255, 255),
                       icon: Icons.feedback_rounded,
                       label: "Feed",
                       onPressed: Feed,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 100,
                     ),
                     ArcedSquareButton(
-                      [
+                      const [
                         Color.fromARGB(255, 255, 105, 94),
                         Color.fromARGB(255, 248, 42, 26),
                       ],
-                      Color.fromARGB(225, 240, 250, 106),
+                      const Color.fromARGB(225, 240, 250, 106),
                       icon: Icons.add_box_rounded,
                       label: "ADD",
                       onPressed: Add,
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 200,
+                const SizedBox(
+                  height: 100,
                 ),
                 Container(
                   child: Row(
                     children: [
-                      SizedBox(
-                        width: 15,
+                      const SizedBox(
+                        width: 30,
                       ),
                       ArcedSquareButton(
-                        [
+                        const [
                           Color.fromARGB(255, 16, 195, 104),
                           Color.fromARGB(224, 20, 105, 80)
                         ],
-                        Color.fromARGB(255, 250, 123, 91),
+                        const Color.fromARGB(255, 250, 123, 91),
                         icon: Icons.emergency_share,
                         label: "Track",
                         onPressed: Track,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 100,
                       ),
                       ArcedSquareButton(
-                        [
+                        const [
                           Color.fromARGB(255, 253, 82, 64),
                           Color.fromARGB(255, 232, 187, 78)
                         ],
-                        Color.fromARGB(255, 255, 219, 219),
+                        const Color.fromARGB(255, 255, 219, 219),
                         icon: Icons.video_camera_front_rounded,
                         label: "Stream",
                         onPressed: Stream,

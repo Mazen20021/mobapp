@@ -18,19 +18,19 @@ class ArcedSquareButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 103,
-            height: 103,
+            width: 90,
+            height: 90,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: colorlists,
                   begin: Alignment.bottomLeft,
                   end: Alignment.topRight),
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(35),
             ),
             child: Icon(
               icon,
               color: color,
-              size: 70,
+              size: 60,
               shadows: [
                 Shadow(
                     color: Color.fromARGB(80, 0, 0, 0), offset: Offset(-3, 5))
@@ -42,7 +42,7 @@ class ArcedSquareButton extends StatelessWidget {
             label,
             style: TextStyle(
               color: Colors.white,
-              fontSize: 28,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
           ),
